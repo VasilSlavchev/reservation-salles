@@ -1,18 +1,15 @@
 <?php
 
-function isdateok($heurecasebegin, $heurecaseend, $lecturebdd) {
+function isdateok($heurecasebegin, $heurecaseend, $lecturebdd, $jour) {
     $k = 0;
     while ( $k < sizeof($lecturebdd) ) {
-        $datecasebegin=date('H:i:s', strtotime($heurecasebegin));
-        $datecaseend=date('H:i:s', strtotime($heurecaseend));
-        $DateBegin = date('H:i:s', strtotime($lecturebdd[$k][4]));
-        $DateEnd = date('H:i:s', strtotime($lecturebdd[$k][6]));
+        $datecasebegin = date( 'H:i:s', strtotime($heurecasebegin) );
+        $datecaseend = date( 'H:i:s', strtotime($heurecaseend) );
+        $DateBegin = date( 'H:i:s', strtotime($lecturebdd[$k][3]) );
+        $DateEnd = date( 'H:i:s', strtotime($lecturebdd[$k][5]) );
 
-        if (($datecasebegin == $DateBegin) || ($datecaseend == $DateEnd)) {
-            echo "is between";
-        }
-        else {
-            echo "NO GO!";  
+        if ( ($datecasebegin == $DateBegin) && $lecturebdd[$k][7] == $jour || ($datecaseend == $DateEnd) && $lecturebdd[$k][7] == $jour ) {
+            return true;
         }
         $k++;
     }
@@ -21,10 +18,69 @@ function isdateok($heurecasebegin, $heurecaseend, $lecturebdd) {
 $i = 0;
 $j = 0;
 while ( $i < 11 ) {
+    if ( $i == 0 ) {
+        $heured = "08:00:00";
+        $heuref = "09:00:00";
+    }
+    if ( $i == 1 ) {
+        $heured = "09:00:00";
+        $heuref = "10:00:00";
+    }
+    if ( $i == 2 ) {
+        $heured = "10:00:00";
+        $heuref = "11:00:00";
+    }
+    if ( $i == 3 ) {
+        $heured = "11:00:00";
+        $heuref = "12:00:00";
+    }
+    if ( $i == 4 ) {
+        $heured = "12:00:00";
+        $heuref = "13:00:00";
+    }
+    if ( $i == 5 ) {
+        $heured = "13:00:00";
+        $heuref = "14:00:00";
+    }
+    if ( $i == 6 ) {
+        $heured = "14:00:00";
+        $heuref = "15:00:00";
+    }
+    if ( $i == 7 ) {
+        $heured = "15:00:00";
+        $heuref = "16:00:00";
+    }
+    if ( $i == 8 ) {
+        $heured = "16:00:00";
+        $heuref = "17:00:00";
+    }
+    if ( $i == 9 ) {
+        $heured = "17:00:00";
+        $heuref = "18:00:00";
+    }
+    if ( $i == 10 ) {
+        $heured = "18:00:00";
+        $heuref = "19:00:00";
+    }
 ?>
     <tr>
         <?php
         while ($j < 6) {
+            if ( $j == 1 ) {
+                $jour = "Monday";
+            }
+            if ( $j == 2 ) {
+                $jour = "Tuesday";
+            }
+            if ( $j == 3 ) {
+                $jour = "Wednesday";
+            }
+            if ( $j == 4 ) {
+                $jour = "Thursday";
+            }
+            if ( $j == 5 ) {
+                $jour = "Friday";
+            }
             if ( $j == 0 ) {
         ?>
             <td class="cheures">
@@ -70,82 +126,29 @@ while ( $i < 11 ) {
             ?>
             <td>
             <?php
-                if ( $j == 3 ) {
-                    if ( $i == 0 ) {
-                        isdateok("08:00:00", "09:00:00", $resultat);
-                    }
-                    if ( $i == 1 ) {
-                        isdateok("09:00:00", "10:00:00", $resultat);
-                    }
-                    if ( $i == 2 ) {
-                        isdateok("10:00:00", "11:00:00", $resultat);
-                    }
-                    if ( $i == 3 ) {
-                        isdateok("11:00:00", "12:00:00", $resultat);
-                    }
-                    if ( $i == 4 ) {
-                        $k = 0;
-                        while ( $k < sizeof($resultat) ) {
-                            if ( $resultat[$k][4] == "12" ) {
-                                echo $resultat[$k][1];
+                $m = 0;
+                while ( $m < 6 ) {
+                    if ( $j == $m ) {
+                        $l = 0;
+                        while ( $l < 11 ) {
+                            if ( $i == $l ) {
+                                $isokevent = isdateok($heured, $heuref, $resultat, $jour);
+                                if ( $isokevent == true ) {
+                                    $requeteevent= "SELECT * from reservations WHERE DATE_FORMAT(debut, \"%T\")=\"$heured\" OR DATE_FORMAT(fin, \"%T\")=\"$heuref\" AND DATE_FORMAT(debut, \"%W\")=\"$jour\"";
+                                    $queryevent = mysqli_query($connexion, $requeteevent);
+                                    $resultatevent = mysqli_fetch_all($queryevent);
+                                    var_dump($resultatevent);
+                                    echo "Coucou mec";
+                                }
+                                else {
+                                    echo "Oh non :(";
+                                }
+                            unset($isokevent);
                             }
-                            $k++;
+                            $l++;
                         }
                     }
-                    if ( $i == 5 ) {
-                        $k = 0;
-                        while ( $k < sizeof($resultat) ) {
-                            if ( $resultat[$k][4] == "13" ) {
-                                echo $resultat[$k][1];
-                            }
-                            $k++;
-                        }
-                    }
-                    if ( $i == 6 ) {
-                        $k = 0;
-                        while ( $k < sizeof($resultat) ) {
-                            if ( $resultat[$k][4] == "14" ) {
-                                echo $resultat[$k][1];
-                            }
-                            $k++;
-                        }
-                    }
-                    if ( $i == 7 ) {
-                        $k = 0;
-                        while ( $k < sizeof($resultat) ) {
-                            if ( $resultat[$k][4] == "15" ) {
-                                echo $resultat[$k][1];
-                            }
-                            $k++;
-                        }
-                    }
-                    if ( $i == 8 ) {
-                        $k = 0;
-                        while ( $k < sizeof($resultat) ) {
-                            if ( $resultat[$k][4] == "16" ) {
-                                echo $resultat[$k][1];
-                            }
-                            $k++;
-                        }
-                    }
-                    if ( $i == 9 ) {
-                        $k = 0;
-                        while ( $k < sizeof($resultat) ) {
-                            if ( $resultat[$k][4] == "17" ) {
-                                echo $resultat[$k][1];
-                            }
-                            $k++;
-                        }
-                    }
-                    if ( $i == 10 ) {
-                        $k = 0;
-                        while ( $k < sizeof($resultat) ) {
-                            if ( $resultat[$k][4] == "18" ) {
-                                echo $resultat[$k][1];
-                            }
-                            $k++;
-                        }
-                    }
+                    $m++;
                 }
                 ?>
                 </td>
