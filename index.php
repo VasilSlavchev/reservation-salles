@@ -12,7 +12,10 @@
 <body>
     <?php include("header.php"); ?>
     <main>
-     <section>
+     <section class="cmid">
+        <section id="indeximg">
+             <img width=100% height=400px src="img/indexmaussane.jpg">
+        </section>
         <?php
         date_default_timezone_set('Europe/Paris');
         if(isset($_SESSION['login']))
