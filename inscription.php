@@ -5,38 +5,42 @@
 <html>
 
 <head>
-    <title>Reservation Salles</title>
+    <title>Reservation Salles - Inscription</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 
 <body>
 <?php include("header.php"); ?>
     <main>
-        <section>
+        <section class="cmid cpageform">
             <?php
             if (isset($_SESSION["login"])) 
             {
                 echo "Bonjour, " . $_SESSION["login"] . " vous êtes déja connecté impossible de s'inscrire.<br />";
                 ?>
-                    <form action="index.php" method="post">
-                        <input name="deco" value="Deconnexion" type="submit" />
-                    </form>
+                <form action="index.php" method="post">
+                    <input name="deco" value="Deconnexion" type="submit" />
+                </form>
             <?php
             } 
             else 
             {
                 ?>
-                <article><h1>Veuillez rentrer vos informations</h1></article>
-                    <form action="inscription.php" method="post">
-                        <label>Login</label>
+                <article class="titleform">
+                <p>Inscription</p>
+                </article>
+                <form action="inscription.php" method="post">
+                    <section class="cform">
+                        <label>Identifiant</label>
                         <input type="text" name="login" required>
-                        <label>Password</label>
+                        <label>Mot de passe</label>
                         <input type="password" name="mdp" required>
-                        <label>Password confirmation</label>
+                        <label>Confirmation du mot de passe</label>
                         <input type="password" name="mdpval" required>
                         <br />
                         <input type="submit" value="S'inscrire" name="valider">
-                    </form>
+                    </section>
+                </form>
                 <?php
 
                 if ( isset($_POST["valider"]) )
@@ -51,13 +55,13 @@
                     if (!empty($resultat3)) 
                     {
                     ?>
-                        <p>Ce Login est déjà prit</p>
+                        <p class="pincorrect">Cet identifiant est déjà prit.</p>
                     <?php
                     }
                     elseif ($_POST["mdp"] != $_POST["mdpval"]) 
                     {
                     ?>
-                        <p>Attention ! Mot de passe différents</p>
+                        <p class="pincorrect">Attention ! Mots de passe différents.</p>
                     <?php
                     }
                     else 

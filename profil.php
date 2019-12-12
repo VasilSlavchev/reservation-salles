@@ -14,8 +14,7 @@ session_start();
 <body>
     <?php include("header.php"); ?>
     <main>
-
-        <section>
+        <section class="cmid cpageform">
             <?php
             if (isset($_SESSION['login']))
             {
@@ -25,17 +24,20 @@ session_start();
                 $resultat = mysqli_fetch_assoc($query);
 
                 ?>
-
+            <article class="titleform">
+                <p>Mon compte</p>
+            </article>
                 <form action="profil.php" method="post">
-                    <label> Login </label>
-                    <input type="text" name="login" value=<?php echo $resultat['login']; ?> />
-                    <label> New Password </label>
-                    <input type="password" name="passwordx" />
-                    <label> Confirm New Password </label>
-                    <input type="password" name="passwordconf" />
-                    <input name="ID" type="hidden" value=<?php echo $resultat['id']; ?> />
-                    <br>
-                    <input type="submit" name="modifier" value="Modifier" />
+                    <section class="cform">
+                        <label>Identifiant</label>
+                        <input type="text" name="login" value=<?php echo $resultat['login']; ?> />
+                        <label>Mot de passe</label>
+                        <input type="password" name="passwordx" />
+                        <label>Confirmation du mot de passe</label>
+                        <input type="password" name="passwordconf" />
+                        <input name="ID" type="hidden" value=<?php echo $resultat['id']; ?> />
+                        <input type="submit" name="modifier" value="Modifier" />
+                    </section>
                 </form>
 
                 <?php 
@@ -44,7 +46,7 @@ session_start();
                          if ($_POST["passwordx"] != $_POST["passwordconf"]) 
                          {
                              ?>
-                            <p>Attention ! Mot de passe différents</p>
+                            <p class="pincorrect">Attention ! Mot de passe différents</p>
                         <?php
                         } 
                         elseif(isset($_POST['passwordx']) && !empty($_POST['passwordx'])){
@@ -60,7 +62,7 @@ session_start();
                             if(!empty($veriflog))
                             {
                                 ?>
-                                <p>Login deja utilisé, requete refusé.<br /></p>
+                                <p class="pincorrect">Login deja utilisé, requete refusé.<br /></p>
                                 <?php
                             }
                         if(empty($veriflog))

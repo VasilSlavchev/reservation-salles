@@ -133,13 +133,19 @@ while ( $i < 11 ) {
                             if ( $i == $l ) {
                                 $isokevent = isdateok($heured, $heuref, $resultat, $jour);
                                 if ( $isokevent == true ) {
-                                    $requeteevent= "SELECT login, titre FROM reservations LEFT JOIN utilisateurs ON utilisateurs.id = reservations.id_utilisateur WHERE DATE_FORMAT(debut, \"%T\")=\"$heured\" OR DATE_FORMAT(fin, \"%T\")=\"$heuref\" AND DATE_FORMAT(debut, \"%W\")=\"$jour\"";
+                                    $requeteevent= "SELECT login, titre, reservations.id FROM reservations LEFT JOIN utilisateurs ON utilisateurs.id = reservations.id_utilisateur WHERE DATE_FORMAT(debut, \"%T\")=\"$heured\" AND DATE_FORMAT(debut, \"%W\")=\"$jour\" AND WEEK(debut) = WEEK(CURDATE()) OR DATE_FORMAT(fin, \"%T\")=\"$heuref\" AND DATE_FORMAT(debut, \"%W\")=\"$jour\" AND WEEK(debut) = WEEK(CURDATE())";
                                     $queryevent = mysqli_query($connexion, $requeteevent);
                                     $resultatevent = mysqli_fetch_all($queryevent);
-                                    echo "<td>".$resultatevent[0][1]."<br />Organisateur: ".$resultatevent[0][0]."<br /></td>";
+                                    if ( !empty($resultatevent) ) {
+                                    $idevent = $resultatevent[0][2];
+                                    echo "<td class=\"cevent\"><a class=\"aevent\" href=\"reservation.php?id=$idevent\"><div class=\"divevent\">".$resultatevent[0][1]."<br />Organisateur: ".$resultatevent[0][0]."<br /></div></a></td>";
+                                    }
+                                    else {
+                                        echo "<td class=\"cnoevent\">"."<a href=\"reservation-form.php\"><div class=\"divnoevent\"></div></a>"."</td>";
+                                    }
                                 }
                                 else {
-                                    echo "<td>"."<a href=\"reservation-form.php\"><div>Oh non :(</div></a>"."</td>";
+                                    echo "<td class=\"cnoevent\">"."<a href=\"reservation-form.php\"><div class=\"divnoevent\"></div></a>"."</td>";
                                 }
                             unset($isokevent);
                             }

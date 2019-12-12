@@ -21,8 +21,8 @@ main {
     width: 80%;
 }
 
-table, table td, table th {
-    border: 2px solid black;
+main table, main table td, main table th {
+    border: 3px solid black;
     border-collapse: collapse;
 }
 
@@ -264,4 +264,203 @@ a {
 #copyright {
 	color: white;
 	display: flex;
+}
+
+/* FORULULAIRE */
+
+.cform {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.cform input {
+	height: 50px;
+	width: 300px;
+	border-radius: 15px;
+	background-color: #BF8F69;
+	border: 2px solid #def369;
+	margin-top: 8px;
+	color: #def369;
+	font-size: 18px;
+	padding-left: 10px;
+}
+
+.cform input:focus {
+	background-color: #def369;
+	border: 2px solid #BF8F69;
+	outline: none;
+	color: #BF8F69;
+}
+
+.cform textarea {
+	height: 200px;
+	width: 400px;
+	border-radius: 15px;
+	background-color: #BF8F69;
+	border: 2px solid #def369;
+	margin-top: 8px;
+	color: #def369;
+	font-size: 18px;
+	padding-left: 10px;
+}
+
+.cform textarea:focus {
+	background-color: #def369;
+	border: 2px solid #BF8F69;
+	outline: none;
+	color: #BF8F69;
+}
+
+.cform label {
+	font-family: "Oswald-Medium";
+	margin-top: 20px;
+	font-size: 24px;
+}
+
+.cform input[type=submit] {
+	color: white;
+    background-color: #BF8F69;
+    background-image: linear-gradient(to right, #def369, rgba(255,255,255,0));
+	transition: background-color 1s;
+	border: none;
+	font-weight: bold;
+	margin-top: 40px;
+	height: 60px;
+	border-radius: 50px;
+    box-shadow: 0px 0px 6px #262626;
+}
+
+.cform input[type=submit]:hover {
+	color: white;
+	background-color: #def369;
+	background-image: linear-gradient(to right, #BF8F69, rgba(255,255,255,0));
+	box-shadow: 0px 0px 10px #262626;
+}
+
+.titleform {
+	font-size: 34px;
+	font-family: "Oswald-Medium";
+	font-weight: bold;
+	margin-bottom: -10px;
+}
+
+.cpageform {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding-bottom: 40px;
+}
+
+.pincorrect {
+	font-family: sans-serif;
+	font-size: 16px;
+}
+
+/* TABLEAU */
+
+#ctableau {
+	width: 100%;
+	height: 8%;
+}
+
+.cheures {
+	width: 10%;
+	height: 8%;
+	background-color: #262626;
+	color: white;
+	text-align: center;
+	font-family: sans-serif;
+	font-weight: bold;
+}
+
+.cevent {
+	width: 18%;
+	height: 8%;
+	background-color: #BF8F69;
+	text-align: center;
+}
+
+.cnoevent {
+	width: 18%;
+	height: 8%;
+	background-color: #def369;
+	text-align: center;
+}
+
+main table,  main tbody,  main thead {
+	width: 100%;
+	height: 100vh;
+}
+
+.cjours {
+	height: 8vh;
+	background-color: #262626;
+	color: white;
+	text-align: center;
+	font-family: sans-serif;
+}
+
+.divnoevent {
+	content: "";
+	height: 100%;
+	width: 100%;
+	font-family: sans-serif;
+}
+
+.divevent {
+	height: 100%;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.aevent {
+	color: #262626;
+	font-family: sans-serif;
+	text-decoration: none;
+}
+
+#ctitleevent {
+	font-size: 34px;
+	font-family: "Oswald-Medium";
+	font-weight: bold;
+	margin-bottom: -30px;
+}
+
+#cevent {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+#cdescevent {
+	width: 80%;
+	padding-left: 2px;
+	padding-right: 2px;
+	overflow-wrap: break-word;
+	text-align: center;
+	font-size: 18px;
+	font-family: sans-serif;
+}
+
+#cdatedebut {
+	font-size: 18px;
+	font-family: sans-serif;
+}
+
+#cdatefin {
+	font-size: 18px;
+	font-family: sans-serif;
+}
+
+#corganisateur {
+	font-size: 18px;
+	font-family: sans-serif;
+	margin-bottom: 40px;
 }

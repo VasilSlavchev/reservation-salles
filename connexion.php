@@ -43,31 +43,36 @@
 <body>
     <?php include("header.php"); ?>
     <main>
-        <section>
+        <section class="cmid cpageform">
             <?php
             if ( !isset($_SESSION['login']) ) {
                 ?>
+                <article class="titleform">
+                    <p>Connexion</p>
+                </article>
                 <form method="post" action="connexion.php">
-                    <label>IDENTIFIANT</label>
-                    <input type="text" name="login" ><br />
-                    <label>MOT DE PASSE</label>
-                    <input type="password" name="password" ><br />
-                    <input type="submit" value="Se connecter" name="connexion" >
+                    <section class="cform">
+                        <label>IDENTIFIANT</label>
+                        <input type="text" name="login" ><br />
+                        <label>MOT DE PASSE</label>
+                        <input type="password" name="password" ><br />
+                        <input type="submit" value="Se connecter" name="connexion" >
+                    </section>
                 </form>
                 <?php
                 if ( $ismdpwrong == true ) {
                 ?>
-                    <p>Identifiant ou mot de passe incorrect.</p>
+                    <p class="pincorrect">Identifiant ou mot de passe incorrect.</p>
                 <?php
                 }
                 elseif ( $isIDinconnu == true ) {
                 ?>
-                    <p>Cet identifiant n'exsite pas.</p>
+                    <p class="pincorrect">Cet identifiant n'exsite pas.</p>
                 <?php
                 }
                 elseif ( $ischampremplis == true ) {
                 ?>
-                    <p>Merci de remplir tous les champs!</p>
+                    <p class="pincorrect">Merci de remplir tous les champs!</p>
                 <?php
                 }
             }

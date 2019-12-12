@@ -18,19 +18,26 @@ $resultat = mysqli_fetch_all($query);
 <body>
 <?php include("header.php"); ?>
     <main>
-        <section>
+        <section id="ctableau">
             <table>
                 <thead>
                     <tr>
-                        <th></th>
-                        <th>Lundi</th>
-                        <th>Mardi</th>
-                        <th>Mercredi</th>
-                        <th>Jeudi</th>
-                        <th>Vendredi</th>
+                        <th class="cjours"></th>
+                        <th class="cjours">Lundi</th>
+                        <th class="cjours">Mardi</th>
+                        <th class="cjours">Mercredi</th>
+                        <th class="cjours">Jeudi</th>
+                        <th class="cjours">Vendredi</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
                     include("tableau.php");
                     ?>
+                </tbody>
+            </table>
+        </section>
+    </main>
+    <?php include("footer.php"); ?>
+</body>
+</html>
