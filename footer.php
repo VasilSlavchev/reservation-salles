@@ -48,7 +48,7 @@
 								</tr>
 								<tr>
 									<td><img src="img/mail.png"></td>
-									<td>tourisme@maussane.com/td>
+									<td>tourisme@maussane.com</td>
 								</tr>
 							</tbody>
 						</table>

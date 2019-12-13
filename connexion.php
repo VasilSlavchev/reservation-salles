@@ -37,7 +37,7 @@
 
 <html>
 <head>
-    <title>Reservation Salles</title>
+    <title>Reservation Salles - Connexion</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>

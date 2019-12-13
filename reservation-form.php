@@ -56,7 +56,7 @@ elseif ( isset($_POST['fsendevent']) && strlen($_POST['ftitleevent']) == 0 || is
 <html>
 
 <head>
-    <title>Reservation Salles</title>
+    <title>Reservation Salles - Création Evènement</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 

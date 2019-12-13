@@ -11,7 +11,7 @@ $resultat = mysqli_fetch_all($query);
 <html>
 
 <head>
-    <title>Reservation Salles</title>
+    <title>Reservation Salles - Planning</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 

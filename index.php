@@ -5,7 +5,7 @@
 <html>
 
 <head>
-    <title>Reservation Salles</title>
+    <title>Reservation Salles - Accueil</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 

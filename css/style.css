@@ -7,7 +7,8 @@
 
 body {
     margin : 0;
-    background-color: #def369;
+	background-color: #def369;
+	font-family: sans-serif;
 }
 
 main {
@@ -399,10 +400,24 @@ a {
 	text-align: center;
 }
 
+.cevent:hover {
+	width: 18%;
+	height: 8%;
+	background-color: rgb(187, 107, 219);
+	text-align: center;
+}
+
 .cnoevent {
 	width: 18%;
 	height: 8%;
 	background-color: #def369;
+	text-align: center;
+}
+
+.cnoevent:hover {
+	width: 18%;
+	height: 8%;
+	background-color: white;
 	text-align: center;
 }
 
