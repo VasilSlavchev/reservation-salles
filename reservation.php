@@ -25,14 +25,18 @@ if ( isset($_GET["id"]) ) {
 <html lang="fr">
 <head>
     <meta charset="utf-8">
-    <title>Réservation Salles - Evenement</title>
+    <title>Réservation Salles - Evènement</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <?php include("header.php"); ?>
     <main>
-        <section class="cmid">
+        <section class="cmid cform">
+            <?php
+            if ( isset($_SESSION['login']) ) {
+            ?>
             <section id="cevent">
+                <img src="img/calendrier.png">
                 <article id="ctitleevent">
                     <p>Evènement <?php echo $resultat[0][1]; ?></p>
                 </article>
@@ -49,6 +53,14 @@ if ( isset($_GET["id"]) ) {
                     <p>Organisé par <?php echo "<b>".$resultat2[0][0]."</b>"; ?></p>
                 </article>
             </section>
+            <?php
+            }
+            else {
+                echo "<p>Vous devez être connecté pour accéder à cette page.</p>";
+            }
+            ?>
         </section>
+    </main>
+    <?php include("footer.php"); ?>
 </body>
 </html>

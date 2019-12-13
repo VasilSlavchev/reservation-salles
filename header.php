@@ -25,7 +25,7 @@
                 </section></a>
                 <a href="index.php" class="btnnav"><section>
                     <form action="index.php" method="get">
-                        <input type="submit" name="deco" value="Déconnexion" />
+                        <input id="decobtn" type="submit" name="deco" value="Déconnexion" />
                     </form>
                 </section></a>
             </section>

@@ -1,17 +1,11 @@
 <?php
 
-function isdateok($heurecasebegin, $heurecaseend, $lecturebdd, $jour) {
-    $k = 0;
-    while ( $k < sizeof($lecturebdd) ) {
-        $datecasebegin = date( 'H:i:s', strtotime($heurecasebegin) );
-        $datecaseend = date( 'H:i:s', strtotime($heurecaseend) );
-        $DateBegin = date( 'H:i:s', strtotime($lecturebdd[$k][3]) );
-        $DateEnd = date( 'H:i:s', strtotime($lecturebdd[$k][5]) );
-
-        if ( ($datecasebegin == $DateBegin) && $lecturebdd[$k][7] == $jour || ($datecaseend == $DateEnd) && $lecturebdd[$k][7] == $jour ) {
-            return true;
-        }
-        $k++;
+function isdateok($heurecasebegin, $connexion, $lecturebdd, $jour) {
+    $requeteisokdate = "SELECT * FROM reservations WHERE WEEK(debut) = WEEK(CURDATE()) AND (\"$heurecasebegin\" BETWEEN DATE_FORMAT(debut, \"%T\") AND DATE_FORMAT(fin, \"%T\")) AND (\"$jour\" BETWEEN DATE_FORMAT(debut, \"%W\") AND DATE_FORMAT(fin, \"%W\"))";
+    $queryisokdate = mysqli_query($connexion, $requeteisokdate);
+    $resultatisokdate = mysqli_fetch_all($queryisokdate);
+    if ( !empty($resultatisokdate) ) {
+        return true;
     }
 }
 
@@ -131,9 +125,9 @@ while ( $i < 11 ) {
                         $l = 0;
                         while ( $l < 11 ) {
                             if ( $i == $l ) {
-                                $isokevent = isdateok($heured, $heuref, $resultat, $jour);
+                                $isokevent = isdateok($heured, $connexion, $resultat, $jour);
                                 if ( $isokevent == true ) {
-                                    $requeteevent= "SELECT login, titre, reservations.id FROM reservations LEFT JOIN utilisateurs ON utilisateurs.id = reservations.id_utilisateur WHERE DATE_FORMAT(debut, \"%T\")=\"$heured\" AND DATE_FORMAT(debut, \"%W\")=\"$jour\" AND WEEK(debut) = WEEK(CURDATE()) OR DATE_FORMAT(fin, \"%T\")=\"$heuref\" AND DATE_FORMAT(debut, \"%W\")=\"$jour\" AND WEEK(debut) = WEEK(CURDATE())";
+                                    $requeteevent= "SELECT login, titre, reservations.id FROM reservations LEFT JOIN utilisateurs ON utilisateurs.id = reservations.id_utilisateur WHERE (\"$heured\" BETWEEN DATE_FORMAT(debut, \"%T\") AND DATE_FORMAT(fin, \"%T\")) AND (\"$heuref\" BETWEEN DATE_FORMAT(debut, \"%T\") AND DATE_FORMAT(fin, \"%T\")) AND DATE_FORMAT(debut, \"%W\")=\"$jour\" AND WEEK(debut) = WEEK(CURDATE()) OR DATE_FORMAT(fin, \"%T\")=\"$heuref\" AND DATE_FORMAT(debut, \"%W\")=\"$jour\" AND WEEK(debut) = WEEK(CURDATE())";
                                     $queryevent = mysqli_query($connexion, $requeteevent);
                                     $resultatevent = mysqli_fetch_all($queryevent);
                                     if ( !empty($resultatevent) ) {

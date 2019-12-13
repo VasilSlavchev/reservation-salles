@@ -7,7 +7,10 @@
 			</section>
 			<section id="cfooterpres">
 				<article id="footerpres">
-					La société PAREDE est implantée dans les Bouches-du-Rhône. Elle est spécialisée dans la construction et les réparations structurelles de tous types d’ouvrage en béton armé dans le bâtiment et les travaux publics. Elle réalise des chantiers dans toute la France.
+					<img height=70 width=175 src="img\logobdr.png">
+				</article>
+				<article id="footerpres">
+					<img height=90 width=175 src="img\logopaca.png">
 				</article>
 			</section>
 			<section id="cfootermenu">
@@ -36,15 +39,16 @@
 							<tbody>
 								<tr>
 									<td><img src="img/adresse.png"></td>
-									<td>9 rue des pommiers<br />13000 MARSEILLE</td>
+									<td>Avenue des Alpilles<br />
+									13520 Maussane-les-Alpilles</td>
 								</tr>
 								<tr>
 									<td><img src="img/tel.png"></td>
-									<td>06 78 43 24 54</td>
+									<td>+33 (0) 4 90 54 23 13</td>
 								</tr>
 								<tr>
 									<td><img src="img/mail.png"></td>
-									<td>contact@parede.fr</td>
+									<td>tourisme@maussane.com/td>
 								</tr>
 							</tbody>
 						</table>

@@ -18,7 +18,8 @@ main {
 
 .cmid {
     background-color: white;
-    width: 80%;
+	width: 80%;
+	min-height: 100vh;
 }
 
 main table, main table td, main table th {
@@ -78,13 +79,17 @@ header nav a {
     justify-content: center;
     align-items: center;
     padding-left: 10px;
-    margin-right: 10px;
+	margin-right: 10px;
 }
 
 .btnnav:hover {
     transition: 0.10s ease-in-out;
     background-color: rgb(97, 65, 36);
-    height: 100%;
+	height: 100%;
+}
+
+#decobtn:hover {
+	cursor: pointer;
 }
 
 header nav a:hover {
@@ -128,8 +133,6 @@ header {
 
 /* FOOTER */
 
-/* ===== FOOTER ===== */
-
 #containerfooter {
 	width: 100%;
 	height: 300px;
@@ -139,6 +142,7 @@ header {
 	flex-direction: row;
 	justify-content: center;
 	align-items: center;
+	font-family: sans-serif;
 }
 
 #cfooterlogo {
@@ -155,12 +159,14 @@ header {
 	width: 25%;
 	display: flex;
 	align-items: center;
+	justify-content: space-around;
 	padding-left: 10px;
 	padding-right: 50px;
 	color: white;
 	border-right: 2px solid #85653B;
 	height: 250px;
 	min-width: 250px;
+	flex-direction: column;
 }
 
 #cfootermenu {
@@ -216,7 +222,7 @@ a {
 }
 
 #footertwitter {
-	background-image: url(img/Twitter.png);
+	background-image: url(../img/Twitter.png);
 	height: 40px;
 	width: 40px;
 	margin-left: 5px;
@@ -224,7 +230,7 @@ a {
 }
 
 #footeryoutube {
-	background-image: url(img/Youtube.png);
+	background-image: url(../img/Youtube.png);
 	height: 40px;
 	width: 40px;
 	margin-left: 5px;
@@ -232,7 +238,7 @@ a {
 }
 
 #footerfacebook {
-	background-image: url(img/Facebook.png);
+	background-image: url(../img/Facebook.png);
 	height: 40px;
 	width: 40px;
 	margin-left: 5px;
@@ -240,20 +246,19 @@ a {
 }
 
 #footertwitter:hover {
-	background-image: url(img/Twitter2.png);
+	background-image: url(../img/Twitter2.png);
 }
 
 #footeryoutube:hover {
-	background-image: url(img/Youtube2.png);
+	background-image: url(../img/Youtube2.png);
 }
 
 #footerfacebook:hover {
-	background-image: url(img/Facebook2.png);
+	background-image: url(../img/Facebook2.png);
 }
 
 #containercopyright {
 	background-color: #262626;
-	background-image: url(img/bg4.png);
 	height: 30px;
 	display: flex;
 	flex-direction: row;
@@ -273,6 +278,17 @@ a {
 	flex-direction: column;
 	justify-content: space-around;
 	align-items: center;
+}
+
+.formimg {
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+
+.formimg img {
+	margin-left: 40px;
+	margin-right: 40px;
 }
 
 .cform input {
@@ -437,6 +453,7 @@ main table,  main tbody,  main thead {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	margin-top: 80px;
 }
 
 #cdescevent {
@@ -463,4 +480,31 @@ main table,  main tbody,  main thead {
 	font-size: 18px;
 	font-family: sans-serif;
 	margin-bottom: 40px;
+}
+
+/* INDEX */
+
+#logomaussane {
+	width: 200px;
+	height: 280px;
+}
+
+#cindex {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	font-size: 16px;
+	font-family: sans-serif;
+	margin-bottom: 40px;
+}
+
+#cindex a {
+	color: #BF8F69;
+	font-weight: bold;
+}
+
+#cindex a:hover {
+	color: #85653B;
+	font-weight: bold;
 }

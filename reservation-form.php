@@ -63,53 +63,60 @@ elseif ( isset($_POST['fsendevent']) && strlen($_POST['ftitleevent']) == 0 || is
 <body>
 <?php include("header.php"); ?>
     <main>
-        <section class="cmid cpageform">
-            <?php
-            if ( isset($_SESSION['login']) ) {
-            ?>
-            <article class="titleform">
-                <p>Création d'évènement</p>
-            </article>
-            <form method="post" action="reservation-form.php">
-                <section class="cform">
-                    <label>Titre de l'évènement</label>
-                    <input id="ftitleevent" type="text" name="ftitleevent">
-                    <label>Description</label>
-                    <textarea name="fdescevent" id="fdescevent" cols="30" rows="10"></textarea>
-                    <label>Date de début</label>
-                    <input type="date" name="fdateeventstart">
-                    <label>Heure de début</label>
-                    <input type="time" name="ftimeeventstart" min="08:00" max="18:00" step="3600">
-                    <label>Date de fin</label>
-                    <input type="date" name="fdateeventend">
-                    <label>Heure de fin</label>
-                    <input type="time" name="ftimeeventend" min="09:00" max="19:00" step="3600">
-                    <input type="submit" value="Envoyer" name="fsendevent">
+        <section class="cmid formimg">
+                <?php
+                if ( isset($_SESSION['login']) ) {
+                ?>
+                <section class="left">
+                    <img src="img/olive.png">
                 </section>
-            </form>
-            <?php
-                if ( $eventsup == true ) {
-                    ?>
-                    <p class="pincorrect">La date de fin de votre évènement doit être supérieure à sa date de début.</p>
-                    <?php
-                }
-                if ( $eventexist == true ) {
-                    ?>
-                    <p class="pincorrect">Un évènement existe déjà !</p>
-                    <?php
-                }
-                if ( $eventchamp == true ) {
-                    ?>
-                    <p class="pincorrect">Merci de remplir tous les champs.</p>
-                    <?php
-                }
-                if ( $eventante == true ) {
-                    ?>
-                    <p class="pincorrect">La date de début de votre évènement ne peu pas être inférieure à la date d'ajourd'hui.</p>
-                    <?php
-                }
-            ?>
-        </section>
+                <section class="mid cpageform">
+                <article class="titleform">
+                    <p>Création d'évènement</p>
+                </article>
+                <form method="post" action="reservation-form.php">
+                    <section class="cform">
+                        <label>Titre de l'évènement</label>
+                        <input id="ftitleevent" type="text" name="ftitleevent">
+                        <label>Description</label>
+                        <textarea name="fdescevent" id="fdescevent" cols="30" rows="10"></textarea>
+                        <label>Date de début</label>
+                        <input type="date" name="fdateeventstart">
+                        <label>Heure de début</label>
+                        <input type="time" name="ftimeeventstart" min="08:00" max="18:00" step="3600">
+                        <label>Date de fin</label>
+                        <input type="date" name="fdateeventend">
+                        <label>Heure de fin</label>
+                        <input type="time" name="ftimeeventend" min="09:00" max="19:00" step="3600">
+                        <input type="submit" value="Envoyer" name="fsendevent">
+                    </section>
+                </form>
+                <?php
+                    if ( $eventsup == true ) {
+                        ?>
+                        <p class="pincorrect">La date de fin de votre évènement doit être supérieure à sa date de début.</p>
+                        <?php
+                    }
+                    if ( $eventexist == true ) {
+                        ?>
+                        <p class="pincorrect">Un évènement existe déjà !</p>
+                        <?php
+                    }
+                    if ( $eventchamp == true ) {
+                        ?>
+                        <p class="pincorrect">Merci de remplir tous les champs.</p>
+                        <?php
+                    }
+                    if ( $eventante == true ) {
+                        ?>
+                        <p class="pincorrect">La date de début de votre évènement ne peu pas être inférieure à la date d'ajourd'hui.</p>
+                        <?php
+                    }
+                ?>
+                </section>
+                <section class="right">
+                    <img src="img/calendrier2.png">
+                </section>
             <?php
             }
             else {
@@ -118,6 +125,7 @@ elseif ( isset($_POST['fsendevent']) && strlen($_POST['ftitleevent']) == 0 || is
             <?php
             }
         ?>
+        </section>
     </main>
     <?php include("footer.php"); ?>
 </body>
