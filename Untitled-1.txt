@@ -11,7 +11,6 @@ function isdateok($heurecasebegin, $connexion, $lecturebdd, $jour) {
 
 $i = 0;
 $j = 0;
-
 while ( $i < 11 ) {
     if ( $i == 0 ) {
         $heured = "08:00:00";
